@@ -49,7 +49,8 @@ func Init() error {
 	defer initMutex.Unlock()
 	if !initialized {
 		var err error
-		logger, err = seelog.LoggerFromWriterWithMinLevel(os.Stdout, seelog.InfoLvl)
+		logger, err = seelog.LoggerFromWriterWithMinLevelAndFormat(os.Stdout, seelog.InfoLvl, "%Date %Time [%Level] %Msg%n")
+
 		if err != nil {
 			return err
 		}
